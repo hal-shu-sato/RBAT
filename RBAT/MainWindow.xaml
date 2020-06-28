@@ -5,8 +5,173 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RBAT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="RBAT" Height="450" Width="800" Background="#FFB4C8C8">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top" LastChildFill="False">
+            <Label Content="RBAT" FontWeight="Bold" FontSize="36" FontStyle="Normal" VerticalAlignment="Center"/>
+            <Border Background="Blue" Margin="0,10" BorderBrush="White" BorderThickness="2" CornerRadius="3" Width="130">
+                <Label Content="STAND BY" Foreground="White" FontWeight="Bold" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            </Border>
+            <Button Content="放送開始" Width="100" Margin="5"/>
+            <Button Content="設定" Width="100" Margin="5"/>
+            <Label Content="Made by ato lash" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Margin="10,0,0,0"/>
+            <Border BorderThickness="1" Background="Black" BorderBrush="Black" Width="150" DockPanel.Dock="Right" VerticalAlignment="Center">
+                <StackPanel>
+                    <Label x:Name="nowDate" Content="1970/01/01（日）" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" FontSize="16"/>
+                    <Separator Margin="0" Background="White" />
+                    <Label x:Name="nowTime" Content="00:00:00" Foreground="Red" FontWeight="Bold" HorizontalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </Border>
+        </DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Border BorderThickness="1" BorderBrush="Black" Margin="5" CornerRadius="4">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <ControlTemplate x:Key="buttonTemplate" TargetType="Button">
+                            <Border BorderThickness="1"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                CornerRadius="8">
+                                <ContentPresenter VerticalAlignment="Center"
+                                    HorizontalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Grid.Resources>
+                    <Label Content="ポン出し"/>
+                    <Button Grid.Row="1" Margin="10" Template="{StaticResource buttonTemplate}">
+                        <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+                    </Button>
+                    <Button Grid.Column="1" Margin="10" Grid.Row="1" Template="{StaticResource buttonTemplate}">
+                        <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+                    </Button>
+                    <Button Grid.Column="2" Margin="10" Grid.Row="1" Template="{StaticResource buttonTemplate}">
+                        <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+                    </Button>
+                    <Button Grid.Row="2" Margin="10" Template="{StaticResource buttonTemplate}">
+                        <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+                    </Button>
+                    <Button Grid.Column="1" Margin="10" Grid.Row="2" Template="{StaticResource buttonTemplate}">
+                        <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+                    </Button>
+                    <Button Grid.Column="2" Margin="10" Grid.Row="2" Template="{StaticResource buttonTemplate}">
+                        <TextBlock Text="TextBlock" TextWrapping="Wrap"/>
+                    </Button>
 
-    </Grid>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Margin="5" CornerRadius="4,4,0,0" Grid.Column="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="自動再生タイムライン"/>
+                    <DataGrid Grid.Row="1"/>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Margin="5" CornerRadius="4" Grid.Row="1" Padding="0,0,0,5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="ミキサー"/>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="4" Grid.Row="1" HorizontalAlignment="Center">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="PC音" HorizontalAlignment="Center"/>
+                            <Slider Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <ToggleButton Content="M" Height="20" Width="20" Margin="5" />
+                                <ToggleButton Content="S" Height="20" Width="20" Margin="5" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="4" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="BGM" HorizontalAlignment="Center"/>
+                            <Slider Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <ToggleButton Content="M" Height="20" Width="20" Margin="5" />
+                                <ToggleButton Content="S" Height="20" Width="20" Margin="5" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="4" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="マイク" HorizontalAlignment="Center"/>
+                            <Slider Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <ToggleButton Content="M" Height="20" Width="20" Margin="5" />
+                                <ToggleButton Content="S" Height="20" Width="20" Margin="5" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="4" Grid.Row="1" HorizontalAlignment="Center" Grid.Column="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Content="マスター" HorizontalAlignment="Center"/>
+                            <Slider Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <ToggleButton Content="M" Height="20" Width="20" Margin="5" />
+                                <ToggleButton Content="S" Height="20" Width="20" Margin="5" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black" Margin="5" CornerRadius="4,4,0,0" Grid.Column="1" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="BGMキュー" />
+                    <DataGrid Grid.Row="1"/>
+                </Grid>
+            </Border>
+        </Grid>
+    </DockPanel>
 </Window>
